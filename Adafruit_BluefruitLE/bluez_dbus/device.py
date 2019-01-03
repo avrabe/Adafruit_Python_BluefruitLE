@@ -159,6 +159,11 @@ class BluezDevice(Device):
     def rssi(self):
         """Return the RSSI signal strength in decibels."""
         return self._props.Get(_INTERFACE, 'RSSI')
+    
+	@property
+    def manufacturerData(self):
+        """Return the manufacturerData."""
+        return( [bytes([v]) for v in self._props.Get(_INTERFACE, 'ManufacturerData')] )
 
     @property
     def _adapter(self):
